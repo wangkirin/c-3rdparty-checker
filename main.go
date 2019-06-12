@@ -9,10 +9,16 @@ import (
 	"bufio"
 	"reflect"
 	"errors"
+	"path/filepath"
 )
 
 func main() {
-	dirpath:="/root/gopath/src/github.com/grpc/grpc"
+	dirpath:="./"
+	if len(os.Args)>1{
+		dirpath=os.Args[1]
+	}
+	dirpath,_=filepath.Abs(dirpath)
+	fmt.Printf("Scan Path: %s \n",dirpath)
 	allHeaderFiles,err:=GetAllHeaderFiles(dirpath,dirpath)
 	if err!=nil {
 		fmt.Println(err.Error())
