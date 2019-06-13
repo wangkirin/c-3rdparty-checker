@@ -10,6 +10,7 @@ import (
 	"reflect"
 	"errors"
 	"path/filepath"
+	"sort"
 )
 
 func main() {
@@ -46,9 +47,15 @@ func main() {
 		}
 	}
 
+	var out[]string
 	for k,_:=range m {
-		fmt.Println(k)
+		out=append(out,k)
 	}
+	sort.Strings(out)
+	for _,s:=range out{
+		fmt.Println(s)
+	}
+
 }
 
 
